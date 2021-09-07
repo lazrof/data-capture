@@ -52,7 +52,7 @@ class DataCapture:
     
     def greater_expensive(self, num:int):
         '''
-        This method validates the data using a for loop
+        This method validates the data using a for loop. Complexity O(N)
         '''
 
         self.validate_implementation()
@@ -61,7 +61,7 @@ class DataCapture:
 
     def less_expensive(self, num:int):
         '''
-        This method validates the data using a for loop
+        This method validates the data using a for loop. Complexity O(N)
         '''
 
         self.validate_implementation()
@@ -84,7 +84,7 @@ class DataCapture:
 
     def between(self, num1:int, num2:int):
         '''
-        This method validates the data using a for loop
+        This method validates the data using a for loop. Complexity O(N)
         '''
         
         self.validate_implementation()

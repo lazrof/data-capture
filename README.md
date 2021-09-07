@@ -34,5 +34,6 @@ where N and M are integers from 0 to 1000. It will return values between N and M
 
 
 #### Considerations
-The class *data_capture.DataCapture* has extra methods that replicate the same functionality for the commands less and greater, but with with a complexity of O(N).
+The class *data_capture.DataCapture* has extra methods that replicate the same functionality for the methods `less` and `greater`, but with a complexity of O(N), 
+this methods are `greater_expensive`and `less_expensive`.
 Also a method called `between_using_hash`, is the same that `between` but it return a intersected set() to get the proper values.
