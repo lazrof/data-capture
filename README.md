@@ -5,9 +5,11 @@ This program requires Python 3 for to work properly.
 
 ### How to Run
 
-Run the following command. Inside the program you can type `help` to get the commands.
+Run the following command. 
 
 `python3 app.py`
+
+Inside the program you can type `help` to get the commands.
 
 
 ## Commands
