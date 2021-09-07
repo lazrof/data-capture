@@ -32,13 +32,13 @@ class TestDataCapture(unittest.TestCase):
             self.data_capture.greater(99)
         with self.assertRaises(TypeError):
             self.data_capture.add(99)
-        self.assertEqual(self.data_capture.greater(10), [15,52])
+        self.assertEqual(self.data_capture.greater(10), {15,52})
 
     def test_less(self):
 
         with self.assertRaises(BadFormat):
             self.data_capture.less(99)
-        self.assertEqual(self.data_capture.less(10), [1,2,9])
+        self.assertEqual(self.data_capture.less(10), {1,2,9})
 
 
 

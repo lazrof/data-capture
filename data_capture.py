@@ -8,7 +8,7 @@ class DataCapture:
     is_builded = False
 
     __not_ready_error_msg = "Can't instantiate greater, less or between methods before build_stats method"
-    __bad_format_error_msg = "greater, less and between_using_hash only allow arguments that you have entered with add"
+    __bad_format_error_msg = "greater, less and between only allow arguments that you have entered with add"
 
     def add(self, num:int):
         
@@ -49,6 +49,30 @@ class DataCapture:
             raise BadFormat(self.__bad_format_error_msg)
             
         return result
+
+    def between(self, num1:int, num2:int):
+
+        '''
+        This method get his data from a dictionary created in the method build_stats. It required that the parameters num1 and num2 have been provided
+        from the add method. Complexity O(1)
+        '''
+
+        self.validate_implementation()
+
+        result = []
+        
+        if num1 == num2:
+            return result
+
+        init, end = self._order_between_args(num1, num2)
+
+        try:
+            init_set = self.hash[init]
+            end_set = self.hash[-end]
+        except KeyError:
+            raise BadFormat(self.__bad_format_error_msg)
+
+        return init_set & end_set
     
     def greater_expensive(self, num:int):
         '''
@@ -82,7 +106,19 @@ class DataCapture:
 
         return result
 
-    def between(self, num1:int, num2:int):
+    
+    def _order_between_args(self, num1, num2):
+        
+        init = num1
+        end = num2
+        if num1 > num2:
+            init = num2
+            end = num1
+        
+        return init, end
+
+
+    def between_expensive(self, num1:int, num2:int):
         '''
         This method validates the data using a for loop. Complexity O(N)
         '''
@@ -105,40 +141,6 @@ class DataCapture:
                 result.append(i)
 
         return result
-
-    def between_using_hash(self, num1:int, num2:int):
-
-        '''
-        This method get his data from a dictionary created in the method build_stats. It required that the parameters num1 and num2 have been provided
-        from the add method.
-        '''
-
-        self.validate_implementation()
-
-        result = []
-        
-        if num1 == num2:
-            return result
-
-        init, end = self._order_between_args(num1, num2)
-
-        try:
-            init_set = set(self.hash[init])
-            end_set = set(self.hash[-end])
-        except KeyError:
-            raise BadFormat(self.__bad_format_error_msg)
-
-        return init_set & end_set
-
-    def _order_between_args(self, num1, num2):
-        
-        init = num1
-        end = num2
-        if num1 > num2:
-            init = num2
-            end = num1
-        
-        return init, end
         
 
     def build_stats(self):
@@ -155,8 +157,8 @@ class DataCapture:
         for i, current in enumerate(self.builded_items):
             num_oposite = self.builded_items[negative_index]
 
-            self.hash[current] = self.builded_items[i+1:]
-            self.hash[-num_oposite] = self.builded_items[:negative_index]
+            self.hash[current] = set(self.builded_items[i+1:])
+            self.hash[-num_oposite] = set(self.builded_items[:negative_index])
 
             negative_index -= 1
 
