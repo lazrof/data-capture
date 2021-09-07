@@ -11,6 +11,9 @@ class DataCapture:
     __bad_format_error_msg = "greater, less and between_using_hash only allow arguments that you have entered with add"
 
     def add(self, num:int):
+        '''
+        Using deque.add() to accomplish a O(1) Complexity.
+        '''
         
         if num < 0  or num > 1000:
             raise ValueError("DataCapture Object only allows positive integers, max value 1000")
@@ -25,7 +28,7 @@ class DataCapture:
     def greater(self, num):
         '''
         This method get his data from a dictionary created in the method build_stats. It required that the parameter num have been provided
-        from the add method.
+        from the add method. Complexity O(1)
         '''
         self.validate_implementation()
 
@@ -39,7 +42,7 @@ class DataCapture:
     def less(self, num):
         '''
         This method get his data from a dictionary created in the method build_stats. It required that the parameter num have been provided
-        from the add method.
+        from the add method. Complexity O(1)
         '''
         self.validate_implementation()
 
@@ -110,7 +113,7 @@ class DataCapture:
 
         '''
         This method get his data from a dictionary created in the method build_stats. It required that the parameters num1 and num2 have been provided
-        from the add method.
+        from the add method. 
         '''
 
         self.validate_implementation()
